@@ -1,11 +1,15 @@
-require("dotenv").config()
+require("dotenv").config();
 const express = require("express")
-const app = express()
-const PORT = process.env.PORT || 4000
+const mongoose = require("mongoose");
+const user = require("./models/user")
 const { dbConnect } = require("./db")
 
 const jobsRoute = require("./controllers/jobs")
 const cardRoute = require("./controllers/cards")
+
+const app = express()
+const PORT = process.env.PORT || 4000
+
 
 app.use(express.json())
 app.use("/jobs", jobsRoute)
@@ -15,3 +19,5 @@ app.listen(PORT, () => {
 	dbConnect()
 	console.log(`[server] listening on ${PORT}`)
 })
+
+
