@@ -19,10 +19,7 @@ router.post("/addcard", async (req, res) => {
 router.get("/allcards", async (req, res) => {
     try {
         const allCards = await card.find()
-
-        res.status(200).json({
-            data: allCards
-        })
+        res.status(200).json(allCards)
     } catch(err) {
         console.log(err)
     }
